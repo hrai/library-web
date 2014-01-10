@@ -8,7 +8,8 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,10 +35,12 @@ public class LoginController {
 	@Inject
 	private LoanService loanService;
 	
-	private static final Logger logger = Logger.getLogger(LoginController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
 	public String login() {
+		logger.info("Request for login page.");
+		
 		return "/login";
 	}
 
@@ -71,7 +74,7 @@ public class LoginController {
 					
 				}*/
 
-				logger.info("User " + userDB.getUsername() + " just logged in." + new Date());
+				logger.info("User {} just logged in. {}", userDB.getUsername(), new Date());
 				return "/homepage";
 			}
 			else {
