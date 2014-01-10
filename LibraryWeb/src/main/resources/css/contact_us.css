@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+.contact_form {
+	margin-top: 80px;
+	width: 600px;
+	margin-left: 50px;
+	align: left;
+}
+
+.images {
+	border: 0;
+	cellpadding: 1;
+	cellspacing: 2;
+	width: 230;
+	align: right;
+	valign:top;
+	bgcolor: #FFFFFF;
+}

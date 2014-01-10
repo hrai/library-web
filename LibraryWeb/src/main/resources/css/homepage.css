@@ -1,0 +1,53 @@
+@CHARSET "ISO-8859-1";
+
+#inner_table {
+	width:350px; 
+	height:10px; 
+	background:#FAFAD2;
+	margin-left: 200px;
+}
+
+.display_records {
+	margin-top: 5px;
+	margin-right: auto;
+	border-style: solid;
+	border-width: 1px;
+	font-size: 12pt;
+	text-align: center;
+	padding: 10px; 
+	border-collapse: collapse;
+}
+
+.display_record tr:first-child {
+	background-color: #FFCCFF;	
+}
+
+.display_records tr:nth-child(odd) {
+	background: #CCC;
+}
+
+.display_records tr:hover {
+	background-color: #FFFFCC;
+}
+
+.display_records td {
+	border: 1px;
+	border-color: yellow;
+}
+
+fieldset {
+	padding: 1em;
+	font: 100% sans-serif;
+	height: auto;
+	width: auto;	
+	margin-left: 200px;
+}
+
+label {
+	float: left;
+	width: 25%;
+	margin-right: 0.5em;
+	padding-top: 0.2em;
+	text-align: right;
+	font-weight: bold;
+}
