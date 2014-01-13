@@ -29,6 +29,7 @@
 			<h3 align="center">You have been successfully logged out.</h3>
 			<div style="align: center; padding-left: 250px;">
 				<input type="button" value="LOGIN PAGE" onclick="goToLoginPage();" />
+				<a href="${pageContext.request.contextPath}/login">Go back </a> 
 			</div>
 		</div>
 	</div>

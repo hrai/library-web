@@ -61,10 +61,11 @@ public class UserServiceImpl implements UserService {
 	public User login(UserLogin userLogin) {
 		User userDB = getUser(userLogin.getUsername());
 		
-		if(userDB!=null)
-			return checkUsernameAndPassword(userLogin, userDB)==true?userDB:null;
+		return userDB;
+		//if(userDB!=null)
+			//return checkUsernameAndPassword(userLogin, userDB)==true?userDB:null;
 		
-		return null;
+		//return null;
 	}
 	
 	public Collection<Loan> getLoanedItems(long userId) {

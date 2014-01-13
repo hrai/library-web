@@ -38,9 +38,14 @@ public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
-	public String login() {
-		logger.info("Request for login page.");
+	public String redirectLogin() {
+		logger.info("Redirecting to login page.");
 		
+		return "redirect:/login";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
 		return "/login";
 	}
 
@@ -65,15 +70,7 @@ public class LoginController {
 					session.setAttribute("isLibrarian", false);
 					model.addAttribute("currentLoans", loanService.getCurrentLoansForDisplay(userDB));
 				}
-				/*
-				else {
-
-					System.out.println("Is librarian ");
-					session.setAttribute("librarian", userDB);
-					System.out.println(userDB.getUsername());
-					
-				}*/
-
+				
 				logger.info("User {} just logged in. {}", userDB.getUsername(), new Date());
 				return "/homepage";
 			}
@@ -91,7 +88,7 @@ public class LoginController {
 
 		return "/homepage";
 	}
-
+	
 	@ModelAttribute(value="userLogin")
 	public UserLogin userLoginModelAttribute() {
 		return new UserLogin();

@@ -13,7 +13,7 @@
 	rel="stylesheet" type="text/css" />
 </head>
 <!-- This is a login page -->
-<%@ page session="false" %>
+<%@ page session="false"%>
 <body onload='document.form.username.focus();'>
 
 	<!--banner-->
@@ -32,16 +32,19 @@
 		</div>
 		<div id="content">
 			<!-- servlet redirection URL-->
-			<form:form method="POST" action="welcome" modelAttribute="userLogin" name="form">
+			<c:url value='/j_spring_security_check' var='security_gateway' />
+			<form:form method="POST"
+				action="${security_gateway}"
+				modelAttribute="userLogin" name="form">
 				<h1>Library Login</h1>
 				<div>
 					<form:input path="username" placeholder="Username" required=""
-						id="username" />
+						id="username" name="j_username" />
 					<form:errors path="username" cssClass="error" />
 				</div>
 				<div>
 					<form:input path="password" placeholder="Password" required=""
-						id="password" type="password" />
+						id="password" name="j_password" type="password" />
 					<form:errors path="password" cssClass="error" />
 				</div>
 				<div class="error">
