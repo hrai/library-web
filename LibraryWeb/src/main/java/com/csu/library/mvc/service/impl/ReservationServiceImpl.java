@@ -13,7 +13,6 @@ import com.csu.library.mvc.dao.CatalogueEntryDao;
 import com.csu.library.mvc.dao.ReservationDao;
 import com.csu.library.mvc.dto.CatalogueEntry;
 import com.csu.library.mvc.dto.Reservation;
-import com.csu.library.mvc.dto.Student;
 import com.csu.library.mvc.dto.User;
 import com.csu.library.mvc.helpers.EmailSenderService;
 import com.csu.library.mvc.service.LoanService;
@@ -43,11 +42,11 @@ public class ReservationServiceImpl implements ReservationService {
 	public boolean reserveItem(CatalogueEntry catalogueEntry, User user) {
 		if(catalogueEntry.isAvailable()) {
 			if(!loanService.hasUnpaidFine(user)) {
-				if(((Student)user).getNoOfLoans() < 2) {
+				if(user.getNoOfLoans() < 2) {
 					Reservation reservation = new Reservation();
 					reservation.setCatalogueEntry(catalogueEntry);
 					reservation.setReservedDate(Calendar.getInstance());
-					reservation.setStudent((Student) user);
+					reservation.setUser(user);
 					
 					catalogueEntry.setReserved(true);
 					catalogueEntry.setAvailable(false);

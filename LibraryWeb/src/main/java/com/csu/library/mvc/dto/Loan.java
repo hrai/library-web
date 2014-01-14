@@ -147,14 +147,10 @@ public class Loan implements Serializable {
 	}
 
 	public void assignUser(User user) {
-		if(user instanceof Professor) {
+		
 			this.setUser(user);
-			((Professor) user).addLoan(this);
-		}
-		else if(user instanceof Student) {
-			this.setUser(user);
-			((Student) user).addLoan(this);
-		}
+			user.addLoan(this);
+		
 	}
 
 	public void assignCatalogueEntry(CatalogueEntry catalogueEntry) {

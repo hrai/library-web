@@ -1,4 +1,4 @@
-package com.csu.library.mvc.dto;
+/*package com.csu.library.mvc.dto;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -22,8 +22,8 @@ public class Student extends User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer noOfLoans;
 	private Integer noOfReservations;
-	/*private Boolean currentLoan;
-	private Boolean unpaidFine;*/
+	private Boolean currentLoan;
+	private Boolean unpaidFine;
 	private Collection<Loan> loanList = new TreeSet<Loan>();
 	private Collection<Reservation> reservationList = new TreeSet<Reservation>();
 	private Collection<Fine> fineList = new TreeSet<Fine>();
@@ -47,7 +47,7 @@ public class Student extends User implements Serializable {
 	public void setNoOfReservations(int noOfReservations) {
 		this.noOfReservations = noOfReservations;
 	}
-	/*
+	
 	@Column(name="current_loan")
 	@NotNull
 	public Boolean hasCurrentLoan() {
@@ -67,7 +67,7 @@ public class Student extends User implements Serializable {
 	public void setUnpaidFine(boolean unpaidFine) {
 		this.unpaidFine = unpaidFine;
 	}
-	*/
+	
 	@OneToMany(mappedBy="user", cascade=CascadeType.PERSIST)
 	@Valid
 	public Collection<Loan> getLoanList() {
@@ -118,3 +118,4 @@ public class Student extends User implements Serializable {
 	}
 
 }
+*/

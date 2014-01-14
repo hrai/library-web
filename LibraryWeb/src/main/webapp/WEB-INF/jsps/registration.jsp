@@ -13,11 +13,30 @@
 	type="text/css" />
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-</head>
+	
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script
 	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	
+	
+<script type="text/javascript">
+<!--
+	$(function() {
+		$('#dob').datepicker({
+			dateFormat : "dd/mm/yy"
+		});
+	});
+	
+	function submitForm() 
+	{
+		var uType = $("[name='userType']");
+		alert($("form").serialize() + uType.val());
+	}
 
+//-->
+</script>
+	
+</head>
 <!-- This is a main page -->
 
 <body>
@@ -56,14 +75,14 @@
 						<td><form:errors path="password" cssClass="error" /></td>
 					</tr>
 					<tr>
-						<td><label>User Type: </label></td>
-						<td><select name="selectedType">
+						<td><form:label path="lastAddedRoleId">User Type: </form:label></td>
+						<td><form:select path="lastAddedRoleId">
 								<c:forEach items="${userTypes}" var="type">
 									<option value="${type.key}">
 										<c:out value="${type.value}" />
 									</option>
 								</c:forEach>
-						</select></td>
+						</form:select></td>
 					</tr>
 
 					<tr>
@@ -127,8 +146,8 @@
 					<tr>
 						<td colspan=3>
 							<div style="padding-left: 100px;">
-								<input type="reset" value="CLEAR" class="button" /> <input
-									type="submit" value="SUBMIT" class="button" />
+								<input type="reset" value="CLEAR" class="button" /> 
+								<input type="submit" value="SUBMIT" class="button" />
 							</div>
 						</td>
 					</tr>
@@ -138,13 +157,3 @@
 	</div>
 </body>
 </html>
-
-<script type="text/javascript">
-<!--
-	$(function() {
-		$("#dob").datepicker({
-			dateFormat : "dd/mm/yy"
-		});
-	});
-//-->
-</script>

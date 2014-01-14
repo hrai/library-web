@@ -21,12 +21,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.csu.library.mvc.beans.Search;
 import com.csu.library.mvc.beans.UserLogin;
-import com.csu.library.mvc.dto.Librarian;
 import com.csu.library.mvc.dto.User;
 import com.csu.library.mvc.service.LoanService;
 import com.csu.library.mvc.service.UserService;
 
-@SessionAttributes({"user", "librarian", "currentLoans", "searchOptions", "search"})
+@SessionAttributes({"user", "currentLoans", "searchOptions", "search"})
 @Controller
 public class LoginController {
 
@@ -66,10 +65,10 @@ public class LoginController {
 				
 				session.setAttribute("isLibrarian", true);
 				
-				if(!(userDB instanceof Librarian)) {
+				//if(!(userDB instanceof Librarian)) {
 					session.setAttribute("isLibrarian", false);
 					model.addAttribute("currentLoans", loanService.getCurrentLoansForDisplay(userDB));
-				}
+				//}
 				
 				logger.info("User {} just logged in. {}", userDB.getUsername(), new Date());
 				return "/homepage";
@@ -103,11 +102,6 @@ public class LoginController {
 		searchOptions.put(3, "Title");
 		
 		return searchOptions;
-	}
-	
-	@ModelAttribute(value="search")
-	public Search searchObjectModelAttribute() {
-		return new Search();
 	}
 	
 }

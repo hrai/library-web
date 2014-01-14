@@ -10,18 +10,16 @@ import org.apache.commons.mail.EmailException;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import com.csu.library.mvc.beans.DisplayCurrentLoans;
 import com.csu.library.mvc.beans.DisplayAllLoanDetails;
+import com.csu.library.mvc.beans.DisplayCurrentLoans;
 import com.csu.library.mvc.dao.CatalogueEntryDao;
 import com.csu.library.mvc.dao.FineDao;
 import com.csu.library.mvc.dao.LoanDao;
 import com.csu.library.mvc.dao.ReservationDao;
-import com.csu.library.mvc.dao.StudentDao;
 import com.csu.library.mvc.dao.UserDao;
 import com.csu.library.mvc.dto.CatalogueEntry;
 import com.csu.library.mvc.dto.Fine;
 import com.csu.library.mvc.dto.Loan;
-import com.csu.library.mvc.dto.Student;
 import com.csu.library.mvc.dto.User;
 import com.csu.library.mvc.helpers.EmailSenderService;
 import com.csu.library.mvc.service.LoanService;
@@ -32,8 +30,6 @@ public class LoanServiceImpl implements LoanService {
 	
 	@Inject
 	private LoanDao loanDao;
-	@Inject
-	private StudentDao studentDao;
 	@Inject
 	private FineDao fineDao;
 	@Inject
@@ -112,16 +108,16 @@ public class LoanServiceImpl implements LoanService {
 		CatalogueEntry catalogueEntry = catalogueEntryDao.getCatalogueEntryByLoan(loan);
 		if(loan.isOverdue(currentCal)) {
 			Fine fine = userService.calculateFine(loan);
-			Student student = studentDao.find(loan.getUser().getUserId(), true);//((Student) user).addFine(fine);
+			User user = userDao.find(loan.getUser().getUserId(), true);//((Student) user).addFine(fine);
 			loan.addFine(fine);
 			
 			catalogueEntry.setLoaned(false);
 			if(!catalogueEntry.isReserved())
 				catalogueEntry.setAvailable(true);
 			
-			fine.setStudent(student);
+			fine.setUser(user);
 			fineDao.save(fine);
-			studentDao.update(student);
+			userDao.update(user);
 		}
 		loanDao.update(loan);
 	}

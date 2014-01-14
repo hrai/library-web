@@ -18,6 +18,15 @@
 	<tx:annotation-driven />
 
 	<context:annotation-config />
+	
+	<mvc:interceptors>
+		<bean class="com.csu.library.mvc.beans.LibraryInterceptor" />
+		<bean class="org.springframework.orm.hibernate4.support.OpenSessionInViewInterceptor">
+			<property name="sessionFactory">
+				<ref local="sessionFactory" />
+			</property>
+		</bean>
+	</mvc:interceptors>
 
 	<!-- Scans the package for contents -->
 	<context:component-scan
@@ -44,9 +53,6 @@
 		<property name="url" value="jdbc:mysql://localhost:3306/csu_library" />
 		<property name="username" value="csulibrary" />
 		<property name="password" value="csulibrary" />
-
-		<!-- <property name="initialSize" value="5" /> <property name="maxIdle" 
-			value="5" /> <property name="maxActive" value="10" /> -->
 	</bean>
 
 	<bean id="sessionFactory"
@@ -57,7 +63,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 	</bean>

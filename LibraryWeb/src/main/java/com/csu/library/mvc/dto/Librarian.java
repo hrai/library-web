@@ -1,4 +1,4 @@
-package com.csu.library.mvc.dto;
+/*package com.csu.library.mvc.dto;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -34,3 +34,4 @@ public class Librarian extends User implements Serializable {
 		ctlgEntryList.setLibrarian(this);
 	}
 }
+*/

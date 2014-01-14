@@ -24,7 +24,7 @@ public class Reservation implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer reservationID;
 	private Calendar reservedDate;
-	private Student student;
+	private User user;
 	//private Email email;
 	private CatalogueEntry catalogueEntry;
 	
@@ -54,12 +54,12 @@ public class Reservation implements Serializable {
 	@JoinColumn(name="user_id")
 	@Valid
 	@NotNull
-	public Student getStudent() {
-		return student;
+	public User getUser() {
+		return user;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	/*
 	@OneToOne(cascade = CascadeType.PERSIST)
@@ -88,9 +88,9 @@ public class Reservation implements Serializable {
 		this.catalogueEntry = catalogueEntry;
 	}
 	
-	public void assignStudent(Student student) {
-		this.student = student;
-		student.addReservation(this);
+	public void assignUser(User user) {
+		this.user = user;
+		user.addReservation(this);
 	}
 	
 	public void assignCatalogueEntry(CatalogueEntry ctlgEntry) {

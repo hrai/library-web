@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.csu.library.mvc.dto.CatalogueEntry;
 
 @Transactional
-@Service("catalogueEntryService")
 public interface CatalogueEntryService {
 
 	public void addItem(CatalogueEntry catalogueEntry);

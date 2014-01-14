@@ -1,6 +1,7 @@
 package com.csu.library.mvc.service;
 
 import java.util.Collection;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.csu.library.mvc.beans.UserLogin;
@@ -27,11 +28,5 @@ public interface UserService {
 	public User getUser(String username);
 
 	public User getUser(Long id);
-
-	public User getStudent(Long id);
-
-	public User getProfessor(Long id);
-
-	public User getLibrarian(Long id);
 
 }

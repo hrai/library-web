@@ -1,4 +1,4 @@
-package com.csu.library.mvc.dto;
+/*package com.csu.library.mvc.dto;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -54,7 +54,7 @@ public class Professor extends User implements Serializable {
 	public void setLoanList(Collection<Loan> loanList) {
 		this.loanList = loanList;
 	}
-	/*
+	
 	@Column(name="current_loan")
 	@NotNull
 	public boolean hasCurrentLoan() {
@@ -64,7 +64,7 @@ public class Professor extends User implements Serializable {
 	public void setCurrentLoans(boolean currentLoan) {
 		this.currentLoan = currentLoan;
 	}
-	*/
+	
 	public void addLoan(Loan loan) {
 		this.getLoanList().add(loan);
 		loan.setUser(this);
@@ -75,3 +75,4 @@ public class Professor extends User implements Serializable {
 		loan.setUser(this);
 	}
 }
+*/

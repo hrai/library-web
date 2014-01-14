@@ -2,17 +2,17 @@ package com.csu.library.mvc.service.impl;
 
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+
 import com.csu.library.mvc.beans.UserLogin;
 import com.csu.library.mvc.dao.CatalogueEntryDao;
 import com.csu.library.mvc.dao.FineDao;
-import com.csu.library.mvc.dao.LibrarianDao;
 import com.csu.library.mvc.dao.LoanDao;
-import com.csu.library.mvc.dao.ProfessorDao;
-import com.csu.library.mvc.dao.StudentDao;
 import com.csu.library.mvc.dao.UserDao;
 import com.csu.library.mvc.dto.Feedback;
 import com.csu.library.mvc.dto.Fine;
@@ -26,12 +26,6 @@ public class UserServiceImpl implements UserService {
 	@Inject
 	private UserDao userDao;
 	@Inject
-	private LibrarianDao librarianDao;
-	@Inject
-	private ProfessorDao professorDao;
-	@Inject
-	private StudentDao studentDao;
-	@Inject
 	private CatalogueEntryDao catalogueEntryDao;
 	@Inject
 	private FineDao fineDao;
@@ -44,18 +38,6 @@ public class UserServiceImpl implements UserService {
 	
 	public User getUser(String username) {
 		return userDao.getUserByUsername(username);		 
-	}
-
-	public User getLibrarian(Long id) {
-		return librarianDao.find(id, true);	 
-	}
-
-	public User getProfessor(Long id) {
-		return professorDao.find(id, true);	 
-	}
-	
-	public User getStudent(Long id) {
-		return studentDao.find(id, true);	 
 	}
 
 	public User login(UserLogin userLogin) {
@@ -118,5 +100,5 @@ public class UserServiceImpl implements UserService {
 		
 		return false;
 	}
-	
+
 }
