@@ -22,8 +22,11 @@ public class LibraryInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		if(modelAndView != null)
-			modelAndView.addObject(new Search());
+		//if(modelAndView != null)
+			//modelAndView.addObject(new Search());
+		
+		//if(modelAndView.getModel().get("user") == null)
+			
 	}
 
 	@Override

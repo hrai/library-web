@@ -19,12 +19,7 @@
 	<!--banner-->
 	<div class="banner"></div>
 	<!--CSS  banner-->
-
-
 	<hr />
-	<!--horizontal  line -->
-
-	<!--main body-->
 
 	<div class="main_body">
 		<div>
@@ -33,31 +28,22 @@
 		<div id="content">
 			<!-- servlet redirection URL-->
 			<c:url value='/j_spring_security_check' var='security_gateway' />
-			<form:form method="POST"
-				action="${security_gateway}"
-				modelAttribute="userLogin" name="form">
+			<form method="POST"
+				action="${security_gateway}" name="form">
 				<h1>Library Login</h1>
 				<div>
-					<form:input path="username" placeholder="Username" required=""
-						id="username" name="j_username" />
-					<form:errors path="username" cssClass="error" />
+					<input placeholder="Username"
+						id="username" name="j_username" type="text" />
 				</div>
 				<div>
-					<form:input path="password" placeholder="Password" required=""
+					<input placeholder="Password"
 						id="password" name="j_password" type="password" />
-					<form:errors path="password" cssClass="error" />
 				</div>
-				<div class="error">
-					<c:if test="${userLogin.errorFindingUser!=null}">
-						<c:out value="${userLogin.errorFindingUser}" />
-					</c:if>
-				</div>
-				<div class="clear"></div>
 				<div>
 					<input type="submit" value="Log in" /> <a href="#">Lost your
 						password?</a> <a href="<c:url value = 'registration'/>">Register</a>
 				</div>
-			</form:form>
+			</form>
 		</div>
 	</div>
 

@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -16,7 +15,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.csu.library.mvc.dto.User;
 import com.csu.library.mvc.service.RoleService;
@@ -56,6 +54,7 @@ public class RegistrationController {
 			return "/registration";
 		}
 
+		user.setEnabled(true);
 		user.setNoOfLoans(0);
 		user.setNoOfReservations(0);
 		user.setCurrentLoans(false);
@@ -70,7 +69,7 @@ public class RegistrationController {
 	}
 
 	@ModelAttribute(value = "securityQuestions")
-	public Map<Integer, String> securityQuestionsModelAttribute() {
+	public static Map<Integer, String> securityQuestionsModelAttribute() {
 		Map<Integer, String> questions = new HashMap<Integer, String>();
 		questions.put(0, "Select your security question");
 		questions.put(1, "What was your first pet?");

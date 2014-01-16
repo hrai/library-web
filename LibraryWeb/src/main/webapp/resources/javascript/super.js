@@ -28,7 +28,3 @@ function reserve_item() {
 function goToWelcomePage() {
 	window.location = '/LibraryTest1/welcome';
 }
-
-function goToLoginPage() {
-	window.location = '/LibraryTest1/';
-}

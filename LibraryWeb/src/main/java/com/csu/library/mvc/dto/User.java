@@ -64,6 +64,7 @@ public class User implements Serializable, Comparable<User> {
 	private Collection<Reservation> reservationList = new TreeSet<Reservation>();
 	private Collection<Fine> fineList = new TreeSet<Fine>();
 	private Collection<Role> roles = new TreeSet<>();
+	private Boolean enabled;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -313,5 +314,13 @@ public class User implements Serializable, Comparable<User> {
 	public int compareTo(User user) {
 		// TODO Auto-generated method stub
 		return this.userId.compareTo(user.getUserId());
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 }

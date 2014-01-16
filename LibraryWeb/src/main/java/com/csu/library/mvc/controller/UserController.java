@@ -21,15 +21,13 @@ import com.csu.library.mvc.service.UserService;
 public class UserController {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+
 	@Inject
 	private UserService userService;
 
 	@RequestMapping(value="/edit_user_details", method = RequestMethod.GET)
-	public String editUserDetails(/*@ModelAttribute User librarian,*/ @ModelAttribute User user, Model model) {
-		//User editableUser = (librarian!=null)?librarian:user;
-		//model.addAttribute("editableUser", editableUser);
-		//model.addAttribute("editableUser", user);
+	public String editUserDetails(@ModelAttribute User user, Model model) {
+		model.addAttribute("securityQuestions", RegistrationController.securityQuestionsModelAttribute());
 
 		return "/editUserInfo";
 	}
@@ -40,7 +38,8 @@ public class UserController {
 			return "/editUserInfo";
 
 		userService.updateUser(editableUser);
-
+		logger.info(editableUser.getUsername() + "'s details updated.");
+		
 		return "/homepage";
 	}
 
